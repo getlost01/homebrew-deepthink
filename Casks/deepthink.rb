@@ -1,6 +1,6 @@
 cask "deepthink" do
   version "1.0.0"
-  sha256 "2ebe6277836dd13be097742c92a384a016da7915b48396d0c77701683b32ce86"
+  sha256 "REPLACE_WITH_SHA256_FROM_RELEASE"
 
   url "https://github.com/getlost01/deepthink/releases/download/v#{version}/DeepThink-#{version}.zip"
   name "DeepThink"
@@ -11,16 +11,15 @@ cask "deepthink" do
 
   app "DeepThink.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-rd", "com.apple.quarantine", "#{appdir}/DeepThink.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/DeepThink",
     "~/Library/Caches/com.deepthink.app",
     "~/Library/Preferences/com.deepthink.app.plist",
     "~/Library/Saved Application State/com.deepthink.app.savedState",
   ]
-
-  caveats <<~EOS
-    DeepThink is not code-signed. After installation, right-click the app
-    and choose Open, or run:
-      xattr -d com.apple.quarantine /Applications/DeepThink.app
-  EOS
 end
