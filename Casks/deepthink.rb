@@ -1,6 +1,6 @@
 cask "deepthink" do
   version "1.0.0"
-  sha256 "REPLACE_WITH_SHA256_FROM_RELEASE"
+  sha256 "2ebe6277836dd13be097742c92a384a016da7915b48396d0c77701683b32ce86"
 
   url "https://github.com/getlost01/deepthink/releases/download/v#{version}/DeepThink-#{version}.zip"
   name "DeepThink"
