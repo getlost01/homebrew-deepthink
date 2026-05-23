@@ -11,16 +11,16 @@ cask "deepthink" do
 
   app "DeepThink.app"
 
-  caveats <<~EOS
-    DeepThink is not code-signed. After installation, right-click the app
-    and choose Open, or run:
-      xattr -d com.apple.quarantine /Applications/DeepThink.app
-  EOS
-
   zap trash: [
     "~/Library/Application Support/DeepThink",
     "~/Library/Caches/com.deepthink.app",
     "~/Library/Preferences/com.deepthink.app.plist",
     "~/Library/Saved Application State/com.deepthink.app.savedState",
   ]
+
+  caveats <<~EOS
+    DeepThink is not code-signed. After installation, right-click the app
+    and choose Open, or run:
+      xattr -d com.apple.quarantine /Applications/DeepThink.app
+  EOS
 end
