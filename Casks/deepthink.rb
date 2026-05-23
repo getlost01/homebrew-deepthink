@@ -4,13 +4,14 @@ cask "deepthink" do
 
   url "https://github.com/getlost01/deepthink/releases/download/v#{version}/DeepThink-#{version}.zip"
   name "DeepThink"
-  desc "AI-powered thinking and knowledge workspace for macOS"
+  desc "AI-powered thinking and knowledge workspace"
   homepage "https://github.com/getlost01/deepthink"
+
+  depends_on :macos
 
   app "DeepThink.app"
 
-  # Required: removes quarantine flag since app is unsigned (no Apple Developer membership)
-  disable_quarantine true
+  quarantine false
 
   zap trash: [
     "~/Library/Application Support/DeepThink",
