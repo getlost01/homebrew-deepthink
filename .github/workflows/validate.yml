@@ -1,0 +1,26 @@
+name: Validate Cask
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint & audit cask
+    runs-on: macos-15
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Add tap from local checkout
+        run: brew tap getlost01/deepthink "$GITHUB_WORKSPACE"
+
+      - name: Style check
+        run: brew style --cask getlost01/deepthink/deepthink
+
+      - name: Audit cask (no network)
+        run: brew audit --cask getlost01/deepthink/deepthink
