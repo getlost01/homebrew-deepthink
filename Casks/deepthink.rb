@@ -11,8 +11,6 @@ cask "deepthink" do
 
   app "DeepThink.app"
 
-  quarantine false
-
   zap trash: [
     "~/Library/Application Support/DeepThink",
     "~/Library/Caches/com.deepthink.app",
